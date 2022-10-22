@@ -1,0 +1,47 @@
+#modal {
+  .box {
+    border-radius: $s-2;
+  }
+
+  input#donation_amount {
+    background-color: transparent;
+    color: $color-light;
+    border-radius: $s-2;
+    border: $s-5 solid;
+    outline: $border-thin transparent;
+    outline-offset: calc(#{$border-thin} * -1);
+    font-size:large;
+    padding: $s-2;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  label {
+    display:block;
+    font-size: medium;
+    text-align: left;
+  }
+
+  abbr {
+    font-size: medium;
+  }
+
+  input.btn {
+    box-shadow: $s-2 $s-2 $color-primary-a;
+    font-weight: bold;
+    font-size: medium;
+    min-width: 10rem;
+    border-radius: $s-2;
+    padding: $s-1;
+    margin-block-start: $s-1;
+  }
+
+  input.btn:active:focus {
+    transform: scale(0.95);
+    box-shadow: $s-4 $s-4 $color-primary;
+  }
+
+  input.btn:hover {
+    box-shadow: $s-2 $s-2 $color-primary;
+  }
+}

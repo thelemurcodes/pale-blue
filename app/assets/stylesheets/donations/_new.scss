@@ -1,0 +1,36 @@
+#modal {
+  z-index: 3;
+
+  p {
+    font-size:small;
+    margin:0;
+  }
+
+  #close {
+    display: flex;
+    justify-content: flex-end;
+
+    i {
+      position:relative;
+      bottom: 1rem;
+      left: 1rem;
+    }
+  }
+
+  #quick-choice {
+    display:flex;
+    justify-content:space-around;
+
+    button {
+      min-width: 3rem;
+    }
+  }
+}
+
+#modal-background {
+  width:100vw;
+  height:100vh;
+  position:fixed;
+  z-index:2;
+  background: $color-dark-c;
+}

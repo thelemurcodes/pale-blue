@@ -1,0 +1,37 @@
+#creator-show {
+  #left-side {
+    flex-basis: 25rem;
+
+    p, p a {
+      font-size:small;
+    }
+  }
+
+  h1 {
+    margin-block-end:1rem;
+  }
+
+  a {
+    text-decoration:none;
+    margin-inline-end:1rem;
+  }
+
+
+
+  #donation-btn {
+    margin-block-start: 1rem;
+  }
+
+  #right-side {
+    min-inline-size: 50%;
+
+    p{
+      text-align: left;
+    }
+  }
+
+  #creator-photo {
+    padding:0;
+    border-radius:9px;
+  }
+}

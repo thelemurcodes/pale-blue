@@ -1,0 +1,43 @@
+#donation-show {
+  min-height:85vh;
+
+  .box.center {
+    border-radius: $s-2;
+  }
+
+  a {
+    font-size: large;
+  }
+  p {
+    word-break:keep-all;
+  }
+
+  .box.banner, #amt, #rffl{
+    padding: $s-2;
+  }
+
+  #amt, #rffl {
+    border-start-start-radius: $s-2;
+    border-start-end-radius: $s-2;
+  }
+
+   #donor, #donated {
+    border-end-start-radius: $s-2;
+    border-end-end-radius: $s-2;
+  }
+
+  #disabled, #redeemed {
+    margin-block-start: $s0;
+    margin-block-end: $s1;
+  }
+
+  #redeemed {
+    background-color: $color-primary;
+    color: $color-dark;
+    box-shadow: none;
+  }
+
+  h2 {
+    font-weight:bold;
+  }
+}

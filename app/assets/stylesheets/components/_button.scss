@@ -1,0 +1,20 @@
+button {
+  box-shadow: $s-2 $s-2 $color-primary-a;
+  font-weight: bold;
+  font-size: medium;
+  min-width: 10rem;
+  border-radius: $s-2;
+}
+
+button.box{
+  padding: $s-1;
+}
+
+button:active:focus {
+  transform: scale(0.95);
+  box-shadow: $s-4 $s-4 $color-primary;
+}
+
+button:hover {
+  box-shadow: $s-2 $s-2 $color-primary;
+}

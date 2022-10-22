@@ -1,0 +1,59 @@
+div#update {
+  textarea, input {
+    background-color: transparent;
+    color: $color-light;
+    border-radius: $s-2;
+    border: $s-5 solid;
+    outline: $border-thin transparent;
+    outline-offset: calc(#{$border-thin} * -1);
+    font-size:large;
+    padding: $s-2;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  input.btn {
+      box-shadow: $s-2 $s-2 $color-primary-a;
+      font-weight: bold;
+      font-size: medium;
+      min-width: 10rem;
+      border-radius: $s-2;
+      padding: $s-1;
+      margin-block-start: $s-1;
+  }
+
+  input.btn:active:focus {
+    transform: scale(0.95);
+    box-shadow: $s-4 $s-4 $color-primary;
+  }
+
+  input.btn:hover {
+    box-shadow: $s-2 $s-2 $color-primary;
+  }
+
+  label {
+    display:block;
+    font-size: medium;
+    text-align: left;
+  }
+
+  .box.center{
+    border-radius: $s-2
+  }
+
+  #creator_photo {
+    max-width:10rem;
+    border: none;
+    padding-inline-start: 0;
+  }
+
+  input[type="file"]::file-selector-button, input[type="file"]::-webkit-file-upload-button {
+    padding: $s-2;
+    border: $s-5 solid;
+    outline: $border-thin transparent;
+    outline-offset: calc(#{$border-thin} * -1);
+    color: $color-light;
+    background-color: $color-dark;
+    border-radius: $s-2;
+  }
+}

@@ -15,6 +15,9 @@ module.exports = {
   plugins: [
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
+    }),
+    new webpack.ProvidePlugin({
+      Rails: ['@rails/ujs']
     })
   ]
 }

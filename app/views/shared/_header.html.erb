@@ -1,0 +1,13 @@
+<header class="box cluster sticky">
+  <%= link_to 'pb', root_path, {class: "box", id: "logo"} %>
+  <div class="cluster" id="nav-items">
+    <%= link_to 'About', '#', {class: "hidden-mobile"} %>
+    <%= link_to 'Apply', new_creator_path, {class: "hidden-mobile"} %>
+    <%= link_to 'Creators', creators_path, {class: "hidden-mobile"} %>
+    <%= link_to 'Raffles', '#', {class: "hidden-mobile"} %>
+    <button class="box hidden-mobile" id="wallet"
+    data-action="click->connect-wallet#connect_wallet"
+    data-connect-wallet-target="wallet">Connect Wallet</button>
+    <div class="hidden-large"><%= render "shared/hamburger_menu" %></div>
+  </div>
+</header>

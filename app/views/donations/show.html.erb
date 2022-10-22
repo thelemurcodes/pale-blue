@@ -1,0 +1,58 @@
+<div class="box banner cover bg-img" id="donation-show">
+  <div></div>
+  <div class="center">
+    <h1 class="center">Nice Donation!</h1>
+    <div>
+      <h2 class="center">Reward Details:</h2>
+      <% amt = 0  %>
+      <% case @donation.amount %>
+      <% when 3...7 %>
+        <% amt = 1 %>
+      <% when 7...10 %>
+        <% amt = 2 %>
+      <% when 10..Float::INFINITY %>
+        <% amt = 3 %>
+      <% end %>
+      <div class="box" id="rffl">
+        <p class="center"><%= amt %> -
+        <% if amt = 1 %>
+          Raffle Ticket </p>
+        <% else %>
+          Raffle Tickets </p>
+        <% end %>
+      </div>
+      <div class="box banner" id="donor">
+        <p class="center">1 - Donor Card</p>
+      </div>
+      <% if  @donation.redeemed %>
+        <button class="box" id="redeemed" disabled="true">Redeemed</button>
+      <% else  %>
+        <%= simple_form_for @donation, method: :patch do |f| %>
+          <%= f.hidden_field :redeemed, as: :hidden %>
+        <% end %>
+        <button class="box" id="disabled" data-controller="raffle-tickets"
+        data-action="click->raffle-tickets#mintNew"
+        data-raffle-tickets-amt-value="<%= amt %>"
+        >Redeem Rewards</button>
+      <% end  %>
+    </div>
+    <h2 class="center">Donation Details:</h2>
+    <div class="center">
+      <div class="box" id="amt">
+        <p class="center">Amount: $<%= @donation.amount %></p>
+      </div>
+      <div class="box banner">
+        <p class="center">Blockchain Confirmation:
+        <a class="center"
+        href="https://solscan.io/tx/<%=@donation.confirmation%>?cluster=devnet"
+        target="_blank" rel="noopener">
+        <%= @donation.confirmation[0,4] %>...<%=@donation.confirmation[@donation.confirmation.length - 4,4] %></a></p>
+      </div>
+      <div class="banner box" id="donated">
+        <p class="center">Donated To:
+        <%= link_to @donation.creator.name, @donation.creator %></p>
+      </div>
+    </div>
+  </div>
+  <div></div>
+</div>

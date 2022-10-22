@@ -1,0 +1,51 @@
+header {
+  direction:ltr;
+}
+
+#logo{
+  font-size: $s1;
+  padding: $s-1;
+  border: $color-dark;
+}
+
+a#logo {
+  font-family: 'Comfortaa', cursive;
+}
+
+a#logo:hover {
+  text-decoration: none;
+}
+
+#nav-items {
+  margin-inline-end: $s-1;
+
+  a {
+    font-weight: bold;
+    font-size: large;
+  }
+
+  button {
+    box-shadow: $s-3 $s-3 $color-primary-a;
+    min-width: auto;
+    padding: $s-2;
+  }
+
+  button:hover {
+    box-shadow: $s-3 $s-3 $color-primary;
+  }
+}
+
+header.box {
+  padding: $s-3;
+}
+
+header.cluster {
+  justify-content: space-between;
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+  z-index: 1;
+	top: 0;
+}

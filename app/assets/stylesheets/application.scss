@@ -1,12 +1,107 @@
 // Graphical variables
+@import "config/variables";
 @import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
+@import "config/media";
+
+// Primitives
+@import "primitives/box";
+@import "primitives/center";
+@import "primitives/cluster";
+@import "primitives/grid";
+@import "primitives/sidebar";
+@import "primitives/stack";
+@import "primitives/switcher";
+@import "primitives/reel";
+@import "primitives/frame";
+@import "primitives/imposter";
 
 // External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "creators/index";
+@import "donations/index";
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size: $font-size;
+  max-inline-size: $measure;
+  line-height: $line-height;
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1);
+}
+
+img:hover {
+  -webkit-filter: grayscale(0);
+  filter: none;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: $s2;
+  text-shadow: $s-5 $s-5 $color-dark;
+  margin-block-start: 0;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
+  text-decoration: underline;
+  text-decoration-color: $color-primary;
+}
+
+p {
+  font-size: large;
+}
+
+footer {
+  a, p {
+    font-size: medium;
+  }
+
+}
+
+.bg-img {
+  background-image:
+  linear-gradient(to bottom, $color-dark-a, $color-dark-a),
+  url('banner.jpeg');
+  background-position: top center;
+  background-size: cover;
+}
+
+hr {
+  height: $s-4;
+  background-color: $color-primary;
+  border: none;
+}

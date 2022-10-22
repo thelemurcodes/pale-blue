@@ -1,0 +1,32 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="box imposter" id="modal" data-controller="donation"
+  data-donation-creator-value="<%= @creator.pale_blue_tkn %>">
+    <div id="close">
+      <div data-action="click->donation#hideModal">
+        <i class="fa-solid fa-x"></i>
+      </div>
+    </div>
+    <div class="stack">
+      <h2 class="center">Choose Amount</h2>
+      <div id="quick-choice">
+        <button class="box" data-action="click->donation#three">$3</button>
+        <button class="box" data-action="click->donation#seven">$7</button>
+        <button class="box" data-action="click->donation#ten">$10</button>
+      </div>
+      <%= simple_form_for [@creator, @donation] do |f| %>
+        <%= f.input :amount, as: :numeric, required: true, label: '$USD',
+        :input_html => { "data-donation-target" => "val" } %>
+        <%= f.hidden_field :confirmation, as: :hidden, required: true %>
+      <% end %>
+      <p data-donation-target="creator"></p>
+      <button class="box center" data-action="click->donation#donate" id="disabled">Donate</button>
+      <div class="center">
+        <p>*Raffle Ticket Minimums*</p>
+        <p>$3 for 1 ticket</p>
+        <p>$7 for 2 tickets</p>
+        <p>$10 for 3 tickets</p>
+      </div>
+    </div>
+  </div>
+<div id="modal-background"></div>
+<% end  %>

@@ -1,0 +1,16 @@
+.frame {
+  $n: 10;
+  $d: 10;
+  aspect-ratio: calc(#{$n} / #{$d});
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame > img,
+.frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}

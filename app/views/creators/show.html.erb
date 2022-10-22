@@ -1,0 +1,100 @@
+<div class="box banner" id="creator-show">
+  <div class="with-sidebar">
+    <div id="left-side">
+      <% if @creator.name.present? %>
+        <h1 class="center"><%= @creator.name %></h1>
+        <% else  %>
+        <h1 class="center">Anonymous</h1>
+      <% end %>
+      <div class="center">
+        <% if @creator.website.present? %>
+          <a href=<%= @creator.website %> target="_blank" rel="noopener">
+          <i class="fa-solid fa-globe"></i></a>
+        <% end %>
+        <% if @creator.linkedin.present? %>
+          <a href=<%= @creator.linkedin %> target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin"></i></a>
+        <% end %>
+        <% if @creator.facebook.present? %>
+          <a href=<%= @creator.facebook %> target="_blank" rel="noopener">
+          <i class="fa-brands fa-square-facebook"></i></a>
+        <% end %>
+        <% if @creator.twitter.present? %>
+          <a href=<%= @creator.twitter %> target="_blank" rel="noopener">
+          <i class="fa-brands fa-square-twitter"></i></a>
+        <% end %>
+        <% if @creator.instagram.present? %>
+          <a href=<%= @creator.instagram %> target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i></a>
+        <% end %>
+        <% if @creator.discord.present? %>
+          <a href=<%= @creator.discord %> target="_blank" rel="noopener">
+          <i class="fa-brands fa-discord"></i></a>
+        <% end %>
+        <p class="center">Creator Since: <%= @creator.created_at.to_date %>
+        <p class="center">Blockchain: <%= @creator.blockchain.name %></p>
+        <p class="center">Pale Blue ID:
+          <a class="center"
+            href="https://solscan.io/token/<%=@creator.pale_blue_tkn%>?cluster=devnet"
+            target="_blank" rel="noopener">
+            <%= @creator.pale_blue_tkn[0,4] %>...
+            <%=@creator.pale_blue_tkn[@creator.pale_blue_tkn.length - 4,4] %>
+          </a>
+        </p>
+      </div>
+      <div class="stack">
+        <div class="center" id="donation-btn" data-controller="donation">
+          <%= button_to 'Make Donation', new_creator_donation_path(@creator),
+          data: { turbo_frame: 'modal' }, method: :get, class: 'box' %>
+        </div>
+        <div class="center"
+          data-controller="creator-check"
+          data-creator-check-creator-value="<%= @creator.pale_blue_tkn %>">
+          <%= button_to 'Edit Profile', edit_creator_path(@creator),
+          method: :get, class: 'box', disabled: true, hidden: true, id: "edit" %>
+        </div>
+      </div>
+    </div>
+    <div id="right-side">
+      <% if @creator.photo.key.present?  %>
+        <img class="box" id='creator-photo' src= <%= cl_image_path @creator.photo.key %>>
+      <% end %>
+      <% if @creator.about.present? %>
+        <h2 class="center">Introduction:</h2>
+        <p class="center"><%= @creator.about %></p>
+        <br><hr><br>
+      <% end %>
+      <div class="banner-cards">
+        <h3 class="center">Raffles</h3>
+        <div class="reel">
+          <% 10.times do %>
+            <%= render 'shared/raffle_card_home'%>
+          <% end %>
+        </div>
+      </div>
+      <div class="banner-cards">
+        <h3 class="center">Files</h3>
+        <div class="reel">
+          <% 10.times do %>
+            <%= render 'shared/fil_card'%>
+          <% end %>
+        </div>
+      </div>
+      <br><hr><br>
+    <div>
+      <h2 class="center">Pale Blue Application:</h2>
+      <h3 class="center">What problem faces my community that I want to solve?</h3>
+      <% if @creator.answer_one %>
+        <p class="center">#1. <%= @creator.answer_one %></p>
+      <% end %>
+      <% if @creator.answer_two.present? %>
+        <p class="center">#2. <%= @creator.answer_two %></p>
+      <% end %>
+      <% if @creator.answer_three.present? %>
+        <p class="center">#3. <%= @creator.answer_three %></p>
+      <% end %>
+    </div>
+    </div>
+
+  </div>
+</div>

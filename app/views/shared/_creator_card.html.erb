@@ -1,0 +1,20 @@
+<% @creators.each do |creator| %>
+    <%= link_to creator_path(creator) do %>
+      <div class="card" id="creator_card">
+
+        <div class="frame">
+          <% if creator.photo.key  %>
+            <img src= <%= cl_image_path creator.photo.key %>>
+          <% else %>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Lemur_catta_(portrait).jpg/576px-Lemur_catta_(portrait).jpg" loading='lazy' alt="lemur">
+          <% end  %>
+        </div>
+
+        <% if creator.name.present? %>
+          <h5 class="center"><%= creator.name %></h5>
+        <% else  %>
+          <h5 class="center">Anonymous</h5>
+        <% end %>
+      </div>
+    <% end %>
+  <% end  %>

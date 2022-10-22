@@ -4,5 +4,20 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ApplyController from "./apply_controller"
+application.register("apply", ApplyController)
+
+import ConnectWalletController from "./connect_wallet_controller"
+application.register("connect-wallet", ConnectWalletController)
+
+import CreatorCheckController from "./creator_check_controller"
+application.register("creator-check", CreatorCheckController)
+
+import CreatorController from "./creator_controller"
+application.register("creator", CreatorController)
+
+import DonationController from "./donation_controller"
+application.register("donation", DonationController)
+
+import RaffleTicketsController from "./raffle_tickets_controller"
+application.register("raffle-tickets", RaffleTicketsController)

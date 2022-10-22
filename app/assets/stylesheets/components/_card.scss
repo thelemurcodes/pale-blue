@@ -1,0 +1,26 @@
+.card {
+  .box.frame img {
+    width: $s5;
+    height: $s5;
+    border-radius: $s-2;
+  }
+
+  .box.frame {
+    padding: 0;
+    border: none;
+  }
+
+  h4 {
+    margin-block-start: $s-3;
+    margin-block-end: $s-3;
+    font-weight: bold;
+    font-size: large;
+  }
+
+  p {
+    color: $color-light-b !important;
+    font-size: medium;
+    margin-block-start: $s-3;
+    margin-block-end: $s-3;
+  }
+}

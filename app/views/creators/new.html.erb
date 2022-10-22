@@ -1,0 +1,24 @@
+<div class="box banner bg-img" id="apply" data-controller="apply">
+  <div class="box center">
+
+  <h2>Apply for a Creator ID</h2>
+  <p class="center">To apply, please provide at least one answer to the following question
+  and submit $10 worth of accepted cryptocurrency. Once the transaction is
+  processed, your ID will be sent to the wallet that submitted payment.</p>
+  <p class="center" id="warning">*This application will be shown on your public profile and cannot be edited.</p>
+  <hr>
+  <h3>What problem faces your community that you want to solve?</h3>
+  <%= simple_form_for @creator do |f| %>
+        <%= f.input :answer_one, as: :text, required: true, label: 'Answer #1:'%>
+        <%= f.input :answer_two, as: :text, required: false, label: 'Answer #2:' %>
+        <%= f.input :answer_three, as: :text, required: false, label: 'Answer #3:' %>
+        <%= f.hidden_field :pale_blue_tkn, as: :hidden, required: true %>
+      <% end %>
+    <button class="box" id="disabled"
+    data-action="click->connect-wallet#apply"
+    data-confirm="test"
+     >Apply</button>
+    <hr>
+    <p data-apply-target="status"></p>
+  </div>
+</div>

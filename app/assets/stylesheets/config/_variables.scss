@@ -1,0 +1,35 @@
+$font-size: calc(1rem + 0.333vw);
+$measure: 60ch;
+$ratio: 1.61803398875;
+
+$s0: 1rem;
+$s1: calc(#{$s0} * #{$ratio});
+$s2: calc(#{$s1} * #{$ratio});
+$s3: calc(#{$s2} * #{$ratio});
+$s4: calc(#{$s3} * #{$ratio});
+$s5: calc(#{$s4} * #{$ratio});
+
+$s-1: calc(#{$s0} / #{$ratio});
+$s-2: calc(#{$s-1} / #{$ratio});
+$s-3: calc(#{$s-2} / #{$ratio});
+$s-4: calc(#{$s-3} / #{$ratio});
+$s-5: calc(#{$s-4} / #{$ratio});
+
+$border-thin: $s-4;
+$border-thick: $s-2;
+
+$line-height: $ratio;
+
+$color-light: rgb(255,255,255);
+$color-light-a: rgba(255,255,255,.25);
+$color-light-b: rgba(255,255,255,0.65);
+$color-light-c: rgba(255,255,255,0.95);
+$color-light-d: rgba(200,200,200,0.3);
+
+$color-dark: rgb(0,0,0);
+$color-dark-a: rgba(0,0,0,0.55);
+$color-dark-b: rgba(0,0,0,0.95);
+$color-dark-c: rgba(0,0,0,0.75);
+
+$color-primary: rgb(86, 143, 179);
+$color-primary-a: rgba(86, 143, 179, .4);

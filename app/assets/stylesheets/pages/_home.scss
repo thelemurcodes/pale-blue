@@ -1,1 +1,95 @@
 // Specific CSS for your home-page
+.animate-character{
+  background-image: linear-gradient(
+    -225deg,
+    #568fb3 0%,
+    #73a4c3 29%,
+    #D7E3EA 67%,
+    #EEF1F2 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.box.banner {
+  border-top: 0;
+}
+
+// first banner
+.box.banner#first {
+  min-height: 80vh;
+  overflow-wrap: break-word;
+  direction:ltr;
+}
+
+div#first {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+div#title {
+  margin-inline-start: $s2;
+  margin-block-start: $s2;
+}
+
+h1 {
+  text-decoration: underline;
+  text-decoration-color: $color-primary;
+}
+
+#pale {
+  margin-block-end: 0;
+}
+
+#place {
+  display:inline;
+  text-decoration:none;
+}
+
+.cluster.mobile-center {
+  margin-block-start: 1rem;
+}
+
+#spacer {
+  background-color: transparent;
+  border: transparent;
+}
+
+// second banner
+#second.box.banner {
+  padding-block-start: $s2;
+  padding-block-end: $s2;
+
+  .box.stack {
+    border-radius: $s-2;
+
+    p {
+      text-align: left;
+    }
+  }
+}
+
+// third and fourth banner
+.banner-cards {
+  margin-inline-start: $s2;
+  margin-inline-end: $s2;
+}
+
+.browse {
+  display: flex;
+  justify-content: center;
+  margin-block-start: $s1;
+  margin-block-end: $s1;
+}

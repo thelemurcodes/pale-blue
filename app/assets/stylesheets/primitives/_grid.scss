@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+  gap: $s1;
+}
+
+@supports (width: Min(250px, 100%)) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, m#{i}nm#{a}x(Min(250px, 100%), 1fr));
+  }
+}

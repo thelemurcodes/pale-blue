@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= Gon::Base.render_data %>
+    <script src="https://kit.fontawesome.com/b7f85748f9.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body data-controller="connect-wallet">
+    <%= turbo_frame_tag "modal" %>
+    <%= render "shared/header" %>
+    <div class="main"><%= yield %></div>
+    <%= render "shared/footer" %>
   </body>
 </html>
