@@ -1,0 +1,17 @@
+<div class="box banner bg-img" id="new-raffle">
+  <div class="box center">
+    <h2>New Raffle</h2>
+      <div>
+        <%= simple_form_for [@raffle] do |f| %>
+          <%= f.error_notification %>
+          <h3>Add info about your raffle</h3>
+          <%= f.input :photo, as: :file, label: 'Cover Photo:' %>
+          <%= f.input :title, label: 'Title:' %>
+          <%= f.input :about, as: :text, label: 'Description:' %>
+          <%= f.hidden_field :creator_id, as: :text, required: true %>
+        <% end %>
+      </div>
+    <button style="margin-block-start:1rem;" class="box"
+    id="disabled" data-controller="get-creator-for-raffle"
+    data-action="click->get-creator-for-raffle#getCreator">Submit</button>
+  </div>

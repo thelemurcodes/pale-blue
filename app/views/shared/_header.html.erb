@@ -4,7 +4,8 @@
     <%= link_to 'About', '#', {class: "hidden-mobile"} %>
     <%= link_to 'Apply', new_creator_path, {class: "hidden-mobile"} %>
     <%= link_to 'Creators', creators_path, {class: "hidden-mobile"} %>
-    <%= link_to 'Raffles', '#', {class: "hidden-mobile"} %>
+    <%= link_to 'Raffles', raffles_path, {class: "hidden-mobile"} %>
+    <%= link_to 'New Raffle', new_raffle_path, {class: "hidden-mobile"} %>
     <button class="box hidden-mobile" id="wallet"
     data-action="click->connect-wallet#connect_wallet"
     data-connect-wallet-target="wallet">Connect Wallet</button>

@@ -1,0 +1,14 @@
+<%= turbo_frame_tag "raffle_item_#{raffle_item.id}" do %>
+  <div class="raffle-item">
+    <%= link_to raffle_item.name, raffle_item_path(raffle_item) %>
+    <div class="raffle_item__actions">
+      <%= button_to "Delete",
+                    raffle_item_path(raffle_item),
+                    method: :delete,
+                    class: "box" %>
+      <%= link_to "Edit",
+                  edit_raffle_item_path(raffle_item),
+                  class: "box" %>
+    </div>
+  </div>
+<% end %>

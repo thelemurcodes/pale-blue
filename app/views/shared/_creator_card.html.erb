@@ -6,7 +6,7 @@
           <% if creator.photo.key  %>
             <img src= <%= cl_image_path creator.photo.key %>>
           <% else %>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Lemur_catta_(portrait).jpg/576px-Lemur_catta_(portrait).jpg" loading='lazy' alt="lemur">
+            <%= image_tag "banner" %>
           <% end  %>
         </div>
 

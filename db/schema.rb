@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_055746) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_28_165809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,11 +114,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_055746) do
 
   create_table "raffle_items", force: :cascade do |t|
     t.bigint "raffle_id", null: false
-    t.string "token_address"
+    t.string "tkn_address"
     t.boolean "delivered"
-    t.bigint "raffle_ticket_id", null: false
+    t.bigint "raffle_ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.text "description"
     t.index ["raffle_id"], name: "index_raffle_items_on_raffle_id"
     t.index ["raffle_ticket_id"], name: "index_raffle_items_on_raffle_ticket_id"
   end
@@ -136,7 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_055746) do
     t.bigint "creator_id", null: false
     t.string "title"
     t.text "about"
-    t.boolean "running"
+    t.boolean "running", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_raffles_on_creator_id"

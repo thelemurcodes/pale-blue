@@ -19,5 +19,8 @@ application.register("creator", CreatorController)
 import DonationController from "./donation_controller"
 application.register("donation", DonationController)
 
+import GetCreatorForRaffleController from "./get_creator_for_raffle_controller"
+application.register("get-creator-for-raffle", GetCreatorForRaffleController)
+
 import RaffleTicketsController from "./raffle_tickets_controller"
 application.register("raffle-tickets", RaffleTicketsController)

@@ -1,7 +1,15 @@
 <div class="card">
   <div class="box frame">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Katta_(Lemur_catta)_jumping.jpg/640px-Katta_(Lemur_catta)_jumping.jpg" loading='lazy' alt="lemur">
+    <% if creator.photo.key.present?  %>
+      <img src= <%= cl_image_path creator.photo.key %>>
+    <% else %>
+      <%= image_tag "banner" %>
+    <% end %>
   </div>
-  <h4>Snoop Doggy Dog</h4>
+  <h4><% if creator.name.present? %>
+        <%= creator.name %>
+        <% else  %>
+        Anonymous
+      <% end %></h4>
   <p>Total Volume: $1000</p>
 </div>

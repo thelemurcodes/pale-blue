@@ -9,6 +9,7 @@
     "@rails/ujs": "^7.0.4",
     "@solana/spl-token": "^0.3.5",
     "@solana/web3.js": "^1.64.0",
+    "aos": "^2.3.4",
     "bootstrap": "^5.2.2",
     "buffer": "^6.0.3",
     "webpack": "^5.74.0",

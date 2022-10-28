@@ -1,0 +1,18 @@
+<div class="box banner">
+  <div style="width: 250px;padding:0;border-radius:9px;">
+    <% if @raffle.photo.key.present?  %>
+      <img src= <%= cl_image_path @raffle.photo.key %>>
+    <% end %>
+  </div>
+  <h2><%= @raffle.title %></h2>
+  <p><%= @raffle.about %></p>
+  <h3>Add Raffle Items</h3>
+    <div>
+      <%= button_to 'Add One', new_raffle_raffle_item_path(@raffle),
+      data: { turbo_frame: dom_id(RaffleItem.new)}, method: :get, class: 'box' %>
+    </div>
+    <%= turbo_frame_tag RaffleItem.new %>
+    <%= turbo_frame_tag "raffle_items" do%>
+
+    <% end %>
+</div>

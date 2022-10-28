@@ -1,0 +1,2 @@
+<%= turbo_stream.prepend "raffle_items", partial: "raffle_items/raffle_item", locals: { raffle_item: @raffle_item } %>
+<%= turbo_stream.update RaffleItem.new, "" %>

@@ -1,7 +1,14 @@
 <div class="card">
   <div class="box frame">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Lemur_catta_(portrait).jpg/576px-Lemur_catta_(portrait).jpg" loading='lazy' alt="lemur">
-  </div>
-  <h4>Madonna</h4>
+    <% if creator.photo.key.present?  %>
+      <img src= <%= cl_image_path creator.photo.key %>>
+      <% else %>
+      <%= image_tag "banner" %>
+    <% end %>  </div>
+  <h4><% if creator.name.present? %>
+        <%= creator.name %>
+        <% else  %>
+        Anonymous
+      <% end %></h4>
   <p>24hr Volume: $1000</p>
 </div>

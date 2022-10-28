@@ -16,19 +16,22 @@
   <div class="stack">
   <h2 class="center">Web3 and Philanthropy</h2>
     <div class="switcher">
-      <div class="box stack">
+      <div class="box stack center" data-aos="zoom-in" data-aos-delay="50"
+    data-aos-duration="1000">
         <h3 class="center">The Big Idea</h3>
         <p class="center">Charitable giving is broken and we are fixing it.
         Pale Blue is a contribution platform that leverages social sharing and
         applies technology to enable transparency, efficiency, and
         accountability not otherwise possible.</p>
       </div>
-      <div class="box stack">
+      <div class="box stack center" data-aos="zoom-in" data-aos-delay="150"
+    data-aos-duration="1000">
         <h3 class="center">Trace Individual Donation</h3>
         <p class="center">Web3 creates a fully transparent chain of giving.
         Allowing donors to trace where their donations are applied.</p>
       </div>
-      <div class="box stack">
+      <div class="box stack center" data-aos="zoom-in" data-aos-delay="250"
+    data-aos-duration="1000">
         <h3 class="center">We Never Share Your Info</h3>
         <p class="center">Have you ever donated to charity and afterwards you
         have been bombarded by spam? Sketchy middlemen agencies take you for
@@ -45,17 +48,17 @@
   <div class="banner-cards">
     <h3>Trending 24hr</h3>
     <div class="reel">
-      <% 10.times do %>
-        <%= render 'shared/24hr_creator_card_home'%>
-      <% end %>
+        <% @creators.each do |creator| %>
+            <%= render "shared/24hr_creator_card_home", creator: creator %>
+        <% end %>
     </div>
   </div>
   <div class="banner-cards">
     <h3>Top Overall</h3>
     <div class="reel">
-      <% 10.times do %>
-        <%= render 'shared/top_creator_card_home'%>
-      <% end %>
+      <% @creators.each do |creator| %>
+            <%= render "shared/top_creator_card_home", creator: creator %>
+        <% end %>
     </div>
   </div>
   <div class="browse">
