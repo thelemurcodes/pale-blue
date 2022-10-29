@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "raffle_item_#{raffle_item.id}" do %>
   <div class="raffle-item">
-    <%= link_to raffle_item.name, raffle_item_path(raffle_item) %>
+    <%= link_to raffle_item.name, raffle_raffle_item_path %>
     <div class="raffle_item__actions">
       <%= button_to "Delete",
                     raffle_item_path(raffle_item),

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     # resources :fils, only: ['new', 'create']
   end
   resources :raffles, only: ['index', 'new', 'create', 'show', 'edit', 'update'] do
-    resources :raffle_items, only: ['new', 'create', 'delete', 'edit', 'show']
+    resources :raffle_items, only: ['new', 'create', 'delete', 'edit', 'show', 'index']
   end
   # get '/transactions', to: 'pages#transactions', as: :transactions
   # post '/raffles/:id/redeem', to: 'raffles#redeem', as: :raffle_transactions

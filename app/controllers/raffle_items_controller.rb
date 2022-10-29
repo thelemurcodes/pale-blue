@@ -1,4 +1,8 @@
 class RaffleItemsController < ApplicationController
+  def index
+    @raffle_item = RaffleItem.all
+  end
+
   def new
     @raffle_item = RaffleItem.new
     @raffle = Raffle.find(params[:raffle_id])
@@ -11,7 +15,7 @@ class RaffleItemsController < ApplicationController
 
     if @raffle_item.save
       respond_to do |format|
-        format.html { redirect_to raffle_items_path, notice: "Raffle Item was successfully created." }
+        format.html { redirect_to raffle_raffle_items_path, notice: "Raffle Item was successfully created." }
         format.turbo_stream
       end
     else

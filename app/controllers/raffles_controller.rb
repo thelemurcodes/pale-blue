@@ -24,7 +24,7 @@ class RafflesController < ApplicationController
 
   def show
     @raffle = Raffle.find(params[:id])
-    @raffle_items = RaffleItems.where('')
+    @raffle_items = RaffleItems.where('raffle_id = ?', @raffle)
   end
 
   def update
