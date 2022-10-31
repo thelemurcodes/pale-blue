@@ -1,0 +1,20 @@
+<% @raffles.each do |raffle| %>
+    <%= link_to raffle_path(raffle) do %>
+      <div class="card" id="raffle_card">
+
+        <div class="frame">
+          <% if raffle.photo.key  %>
+            <img src= <%= cl_image_path raffle.photo.key %>>
+          <% else %>
+            <%= image_tag "banner" %>
+          <% end  %>
+        </div>
+
+        <% if raffle.title.present? %>
+          <h5 class="center"><%= raffle.title %></h5>
+        <% else  %>
+          <h5 class="center">Unknown</h5>
+        <% end %>
+      </div>
+    <% end %>
+  <% end  %>

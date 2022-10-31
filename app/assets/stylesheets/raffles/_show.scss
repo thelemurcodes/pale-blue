@@ -1,0 +1,11 @@
+div#raffle-show {
+    min-height: 90vh;
+
+    #left-side{
+      flex-basis: 25rem;
+
+      a {
+        font-size: large;
+      }
+    }
+}

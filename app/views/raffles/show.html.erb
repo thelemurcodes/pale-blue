@@ -1,2 +1,33 @@
-<h1>Raffles#show</h1>
-<p>Find me in app/views/raffles/show.html.erb</p>
+<% if @raffle.photo.key  %>
+  <div class="box banner bg-img" id="raffle-show" style="background-image:
+  linear-gradient(to bottom, $color-dark-a, $color-dark-a),
+  <%= cl_image_path @raffle.photo.key %>;">
+<% else %>
+  <div class="box banner bg-img" id="raffle-show">
+<% end  %>
+    <div class="with-sidebar" style="align-items:flex-start">
+      <div class="box" id="left-side" style="border-radius:9px">
+        <h1 class="center" style="margin-block-end:0">Raffle: <%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+        <div class="stack"style="display:flex;align-items:center">
+          <p>Time Remaining: 10:05.73</p>
+          <p style="margin-block-start:0">Created by:
+            <%= link_to creator_path(@raffle.creator) do %>
+              <%= @raffle.creator.name.present? ? @raffle.creator.name : "Anonymous" %>
+            <% end  %>
+          </p>
+          <div class="center" id="donation-btn" data-controller="donation">
+          <%= button_to 'Make Donation', new_creator_donation_path(@raffle.creator),
+          data: { turbo_frame: 'modal' }, method: :get, class: 'box' %>
+        </div>
+        </div>
+        <h2 class="center">About </h2>
+        <p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>
+      </div>
+      <div id="right-side">
+      <h2 class="center">Raffle Items</h2>
+        <div class="grid">
+          <%= render "shared/raffle_item_card" %>
+        </div>
+      </div>
+    </div>
+  </div>

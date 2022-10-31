@@ -1,14 +1,15 @@
 <%= turbo_frame_tag "raffle_item_#{raffle_item.id}" do %>
-  <div class="raffle-item">
-    <%= link_to raffle_item.name, raffle_raffle_item_path %>
-    <div class="raffle_item__actions">
-      <%= button_to "Delete",
-                    raffle_item_path(raffle_item),
-                    method: :delete,
-                    class: "box" %>
-      <%= link_to "Edit",
-                  edit_raffle_item_path(raffle_item),
-                  class: "box" %>
-    </div>
+  <div class="box center" style="border-radius:9px">
+    <%= link_to raffle_item.name, raffle_raffle_item_path(@raffle, raffle_item), data: { turbo_frame: "_top" } %>
   </div>
+    <div style="display:flex;justify-content:center;gap:1rem;margin-block-start:1rem">
+      <%= button_to "Delete",
+                    raffle_raffle_item_path(@raffle, raffle_item),
+                    method: :delete,
+                    class: "box", style: "min-width:5rem" %>
+      <%= button_to "Edit",
+                  edit_raffle_raffle_item_path(@raffle, raffle_item),
+                  method: :get,
+                  class: "box", style: "min-width:5rem" %>
+    </div>
 <% end %>

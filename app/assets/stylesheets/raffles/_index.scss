@@ -1,1 +1,7 @@
 @import "new";
+@import "show";
+@import "edit";
+
+div#raffles {
+  min-height: 90vh;
+}

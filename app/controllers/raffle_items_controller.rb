@@ -15,7 +15,7 @@ class RaffleItemsController < ApplicationController
 
     if @raffle_item.save
       respond_to do |format|
-        format.html { redirect_to raffle_raffle_items_path, notice: "Raffle Item was successfully created." }
+        format.html { redirect_to raffle_raffle_item_path(@raffle, @raffle_item), notice: "Raffle Item was successfully created." }
         format.turbo_stream
       end
     else
@@ -29,6 +29,16 @@ class RaffleItemsController < ApplicationController
 
   def show
     @raffle_item = RaffleItem.find(params[:id])
+  end
+
+  def destroy
+    @raffle_item = RaffleItem.find(params[:id])
+    @raffle_item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to raffles_path, notice: "Raffle Item was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private
