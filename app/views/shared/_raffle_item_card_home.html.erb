@@ -1,7 +1,15 @@
 <div class="card">
-  <div class="box frame">
-    <img src="https://www.critterbabies.com/wp-content/uploads/2014/01/baby-lemur.jpg" loading='lazy' alt="lemur-zoo">
+  <div class="frame">
+    <% if raffle_item.photo.key.present?  %>
+      <img  style="width:10rem;border-radius:9px" src= <%= cl_image_path raffle_item.photo.key %>>
+    <% else %>
+      <%= image_tag "banner",  style:"width:10rem;border-radius:9px" %>
+    <% end %>
   </div>
-  <h4>Baby Lemur</h4>
+  <% if raffle_item.name.present? %>
+    <h4><%= raffle_item.name %></h4>
+  <% else  %>
+    <h4>Unknown</h4>
+  <% end %>
   <p>Tickets Redeemed: 100</p>
 </div>

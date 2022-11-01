@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "pages#home"
   resources :donations, only: ['index', 'show', 'update']
-  # get '/about', to: 'pages#about'
+  get '/about', to: 'pages#about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :creators, only: ['new', 'create', 'show', 'edit', 'index', 'update'] do
     resources :donations, only: ['new', 'create']

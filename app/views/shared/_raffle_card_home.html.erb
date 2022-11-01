@@ -1,8 +1,16 @@
 <div class="card">
-  <div class="box frame">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Zoo_Praha%2C_lemur_kata.jpg/1024px-Zoo_Praha%2C_lemur_kata.jpg" loading='lazy' alt="lemur-zoo">
+  <div class="frame">
+    <% if raffle.photo.key.present?  %>
+      <img  style="width:10rem;border-radius:9px" src= <%= cl_image_path raffle.photo.key %>>
+    <% else %>
+      <%= image_tag "banner",  style:"width:10rem;border-radius:9px" %>
+    <% end %>
   </div>
-  <h4>Yearly Zoo Raffle</h4>
+  <% if raffle.title.present? %>
+    <h4><%= raffle.title %></h4>
+  <% else  %>
+    <h4>Unknown</h4>
+  <% end %>
   <p>Donations: $5000</p>
   <p>Raffle Items: 50</p>
   <p>Tickets Redeemed: 300</p>

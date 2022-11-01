@@ -1,4 +1,4 @@
-<div class="box banner" id="creator-show">
+<div class="box banner" id="creator-show" style="min-height:90vh">
   <div class="with-sidebar">
     <div id="left-side">
       <% if @creator.name.present? %>
@@ -64,25 +64,32 @@
         <p class="center"><%= @creator.about %></p>
         <br><hr><br>
       <% end %>
+      <% raffles = Raffle.where('creator_id = ?', @creator) %>
+      <% if raffles.count > 0 %>
       <div class="banner-cards">
         <h3 class="center">Raffles</h3>
         <div class="reel">
-          <% 10.times do %>
-            <%= render 'shared/raffle_card_home'%>
+          <% raffles.each do |raffle|  %>
+            <%= render 'shared/raffle_card_home', raffle: raffle%>
           <% end %>
         </div>
       </div>
-      <div class="banner-cards">
-        <h3 class="center">Files</h3>
-        <div class="reel">
-          <% 10.times do %>
-            <%= render 'shared/fil_card'%>
-          <% end %>
+      <% end  %>
+      <% files = Fil.where('creator_id = ?', @creator) %>
+      <% if files.count > 0 %>
+        <div class="banner-cards">
+          <h3 class="center">Files</h3>
+          <div class="reel">
+            <% 10.times do %>
+              <%= render 'shared/fil_card'%>
+            <% end %>
+          </div>
         </div>
-      </div>
       <br><hr><br>
+      <% end %>
+
     <div>
-      <h2 class="center">Pale Blue Application:</h2>
+      <h2 class="center">Sign up form:</h2>
       <h3 class="center">What problem faces my community that I want to solve?</h3>
       <% if @creator.answer_one %>
         <p class="center">#1. <%= @creator.answer_one %></p>

@@ -1,0 +1,15 @@
+div#raffle_card {
+  h5 {
+    margin-block-end:1rem;
+    margin-block-start:0;
+    font-size:medium;
+  }
+
+  img {
+    border-radius: $s-2;
+  }
+
+  a {
+    text-decoration:none !important;
+  }
+}

@@ -15,6 +15,9 @@
         <% else  %>
           <h5 class="center">Unknown</h5>
         <% end %>
+        <p>Time Remaining: </p>
+        <p>Raffle Items: <% count =  RaffleItem.where('raffle_id = ?', raffle).count %><%= count %></p>
+        <p>Tickets Redeemed: </p>
       </div>
     <% end %>
   <% end  %>

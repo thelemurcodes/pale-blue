@@ -5,8 +5,14 @@
       <h1 id="place">the place to <h1 class="typed"></h1></h1>
       <div class="cluster mobile-center">
         <button class="box hidden-large">Connect Wallet</button>
-        <button class="box">Explore Collections</button>
-        <button class="box">Become a Creator</button>
+        <%= button_to "Explore Collections",
+                    raffles_path,
+                    method: :get,
+                    class: "box" %>
+        <%= button_to "Become a Creator",
+                    new_creator_path,
+                    method: :get,
+                    class: "box" %>
       </div>
     </div>
     <div class="box" id="spacer"></div>
@@ -24,13 +30,13 @@
         applies technology to enable transparency, efficiency, and
         accountability not otherwise possible.</p>
       </div>
-      <div class="box stack center" data-aos="zoom-in" data-aos-delay="150"
+      <div class="box stack center" data-aos="zoom-in" data-aos-delay="200"
     data-aos-duration="1000">
         <h3 class="center">Trace Individual Donation</h3>
         <p class="center">Web3 creates a fully transparent chain of giving.
         Allowing donors to trace where their donations are applied.</p>
       </div>
-      <div class="box stack center" data-aos="zoom-in" data-aos-delay="250"
+      <div class="box stack center" data-aos="zoom-in" data-aos-delay="350"
     data-aos-duration="1000">
         <h3 class="center">We Never Share Your Info</h3>
         <p class="center">Have you ever donated to charity and afterwards you
@@ -39,7 +45,10 @@
         our secure platform.</p>
       </div>
     </div>
-    <button class="center box animate-character">Learn More</button>
+    <div class="center"><%= button_to "Learn More",
+                    about_path,
+                    method: :get,
+                    class: "box animate-character" %></div>
   </div>
 </div>
 
@@ -62,7 +71,10 @@
     </div>
   </div>
   <div class="browse">
-    <button class="box">Browse Creators</button>
+    <%= button_to "Browse Creators",
+                    creators_path,
+                    method: :get,
+                    class: "box" %>
   </div>
 </div>
 
@@ -71,8 +83,8 @@
   <div class="banner-cards">
     <h3>Trending 24hr</h3>
     <div class="reel">
-      <% 10.times do %>
-        <%= render 'shared/raffle_card_home'%>
+      <% @raffles.each do |raffle| %>
+        <%= render 'shared/raffle_card_home', raffle: raffle %>
       <% end %>
     </div>
   </div>
@@ -80,12 +92,15 @@
   <div class="banner-cards">
     <h3>Top Raffle Items</h3>
     <div class="reel">
-      <% 10.times do %>
-        <%= render 'shared/raffle_item_card_home'%>
+      <% @raffle_items.each do |raffle_item| %>
+        <%= render 'shared/raffle_item_card_home', raffle_item: raffle_item %>
       <% end %>
     </div>
     <div class="browse">
-      <button class="box">Browse Raffles</button>
+    <%= button_to "Browse Raffles",
+                    raffles_path,
+                    method: :get,
+                    class: "box" %>
     </div>
   </div>
 </div>

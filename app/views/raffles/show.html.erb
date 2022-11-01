@@ -1,7 +1,7 @@
-<% if @raffle.photo.key  %>
+<% if @raffle.photo.key.present?  %>
   <div class="box banner bg-img" id="raffle-show" style="background-image:
-  linear-gradient(to bottom, $color-dark-a, $color-dark-a),
-  <%= cl_image_path @raffle.photo.key %>;">
+  linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.2)),
+  url('<%= cl_image_path @raffle.photo.key %>');">
 <% else %>
   <div class="box banner bg-img" id="raffle-show">
 <% end  %>

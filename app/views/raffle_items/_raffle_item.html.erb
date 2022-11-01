@@ -1,7 +1,12 @@
 <%= turbo_frame_tag "raffle_item_#{raffle_item.id}" do %>
-  <div class="box center" style="border-radius:9px">
+  <div class="box center" style="border-radius:9px;padding:0">
+    <% if raffle_item.photo.key  %>
+      <img src= <%= cl_image_path raffle_item.photo.key %>>
+    <% else %>
+      <%= image_tag "banner" %>
+    <% end  %>
     <%= link_to raffle_item.name, raffle_raffle_item_path(@raffle, raffle_item), data: { turbo_frame: "_top" } %>
-  </div>
+    </div>
     <div style="display:flex;justify-content:center;gap:1rem;margin-block-start:1rem">
       <%= button_to "Delete",
                     raffle_raffle_item_path(@raffle, raffle_item),
