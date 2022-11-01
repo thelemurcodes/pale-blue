@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Lockup::Engine, at: '/lockup'
   root to: "pages#home"
   resources :donations, only: ['index', 'show', 'update']
   get '/about', to: 'pages#about'

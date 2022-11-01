@@ -132,6 +132,8 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
+    lockup (1.7)
+      rails (>= 3, < 7.1)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -275,6 +277,7 @@ DEPENDENCIES
   gon
   jbuilder
   jsbundling-rails
+  lockup
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)

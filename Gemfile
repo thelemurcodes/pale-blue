@@ -79,3 +79,5 @@ end
 gem 'gon'
 
 gem "cloudinary"
+
+gem 'lockup'

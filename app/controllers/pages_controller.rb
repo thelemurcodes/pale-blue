@@ -4,4 +4,7 @@ class PagesController < ApplicationController
     @raffles = Raffle.first(10)
     @raffle_items = RaffleItem.first(10)
   end
+
+  def sign_in
+  end
 end
