@@ -1,14 +1,17 @@
 <div class="card">
-  <div class="box frame">
-    <% if creator.photo.key.present?  %>
-      <img src= <%= cl_image_path creator.photo.key %>>
-      <% else %>
-      <%= image_tag "banner" %>
-    <% end %>  </div>
-  <h4><% if creator.name.present? %>
+  <%= link_to creator_path(creator) do %>
+    <div class="box frame">
+      <% if creator.photo.key.present?  %>
+        <img src= <%= cl_image_path creator.photo.key %>>
+        <% else %>
+        <%= image_tag "banner" %>
+      <% end %>
+    </div>
+  <% end %>
+    <h4><% if creator.name.present? %>
         <%= creator.name %>
         <% else  %>
-        Anonymous
+        <%= Faker::Twitter.screen_name %>
       <% end %></h4>
-  <p>24hr Volume: $1000</p>
+  <p>24hr Volume: $<%= rand(5000) %></p>
 </div>

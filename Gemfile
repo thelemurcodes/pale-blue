@@ -81,3 +81,5 @@ gem 'gon'
 gem "cloudinary"
 
 gem 'lockup'
+
+gem 'faker'

@@ -1,13 +1,13 @@
 <% if @raffle.photo.key.present?  %>
   <div class="box banner bg-img" id="raffle-edit" style="background-image:
-  linear-gradient(to bottom, $color-dark-a, $color-dark-a),
-  <%= cl_image_path @raffle.photo.key %>;">
+  linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.2)),
+  url('<%= cl_image_path @raffle.photo.key %>');">
 <% else %>
   <div class="box banner bg-img" id="raffle-edit">
 <% end  %>
     <div class="with-sidebar" style="align-items:flex-start">
       <div class="box" id="left-side" style="border-radius:9px">
-        <h1 class="center" style="margin-block-end:0">Raffle: <%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+        <h1 class="center" style="margin-block-end:0"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
         <div class="stack"style="display:flex;align-items:center">
           <p>Time Remaining: 10:05.73</p>
           <p style="margin-block-start:0">Created by:
@@ -22,19 +22,19 @@
         <p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>
       </div>
       <div id="right-side">
-        <h2 class="center">Raffle Items</h2>
-        <div class ="center">
-          <%= button_to 'Add One', new_raffle_raffle_item_path(@raffle),
-          data: { turbo_frame: dom_id(RaffleItem.new)}, method: :get, class: 'box' %>
-          <%= turbo_frame_tag RaffleItem.new %>
+        <div class="box" style="border-radius:9px">
+          <h2 class="center">Raffle Items</h2>
+          <div class ="center">
+            <%= button_to 'Add One', new_raffle_raffle_item_path(@raffle),
+            data: { turbo_frame: dom_id(RaffleItem.new)}, method: :get, class: 'box' %>
+          </div>
         </div>
-        <% if @raffle_items.present? %>
-          <%= turbo_frame_tag "raffle_items" do %>
-            <div class="grid" style="margin-block-start:2rem">
-              <%= render @raffle_items %>
-            </div>
-          <% end %>
-        <% end  %>
+        <%= turbo_frame_tag RaffleItem.new %>
+        <%= turbo_frame_tag "raffle_items" do %>
+          <div class="grid" style="margin-block-start:2rem">
+            <%= render @raffle_items %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

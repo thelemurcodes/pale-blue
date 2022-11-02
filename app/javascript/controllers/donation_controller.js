@@ -51,14 +51,13 @@ export default class extends Controller {
     const provider = this.get_provider()
     const connection = new Connection(clusterApiUrl('devnet'))
     const amount = this.valTarget.value
-    const creator_id = new PublicKey(this.creatorValue);
-
+    const creator_id = new PublicKey(this.creatorValue)
 
     async function main(connection, provider, amount, creator_id) {
       const price = await get_price()
       const creator_wallet = await get_creator_wallet(connection, creator_id)
       const new_amt = amount / price
-
+      
        // Send sol to creator wallet
       const signature = await phantomTransfer(provider, creator_wallet, new_amt)
       return signature

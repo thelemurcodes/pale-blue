@@ -1,17 +1,18 @@
 <div class="card">
-  <div class="frame">
+ <%= link_to raffle_path(raffle) do %>
+  <div class="box frame">
     <% if raffle.photo.key.present?  %>
-      <img  style="width:10rem;border-radius:9px" src= <%= cl_image_path raffle.photo.key %>>
+      <img src= <%= cl_image_path raffle.photo.key %>>
     <% else %>
-      <%= image_tag "banner",  style:"width:10rem;border-radius:9px" %>
+      <%= image_tag "banner" %>
     <% end %>
   </div>
+  <% end  %>
   <% if raffle.title.present? %>
     <h4><%= raffle.title %></h4>
   <% else  %>
-    <h4>Unknown</h4>
+    <h4><%=Faker::Hipster.sentence(word_count: 3) %></h4>
   <% end %>
-  <p>Donations: $5000</p>
-  <p>Raffle Items: 50</p>
-  <p>Tickets Redeemed: 300</p>
+  <p>Raffle Items: <%= rand(50) %></p>
+  <p>Tickets Redeemed: <%= rand(4000) %></p>
 </div>

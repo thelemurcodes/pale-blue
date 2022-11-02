@@ -1,6 +1,8 @@
 <div class="box banner" id="raffles">
 <h2 class="center">Live Raffles</h2>
   <div class="grid">
-  <%= render "shared/raffle_card" %>
+    <% @raffles.each do |raffle| %>
+      <%= render "shared/raffle_card", raffle: raffle %>
+    <% end %>
   </div>
 </div>

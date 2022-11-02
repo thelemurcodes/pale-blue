@@ -4,7 +4,7 @@
       <% if @creator.name.present? %>
         <h1 class="center"><%= @creator.name %></h1>
         <% else  %>
-        <h1 class="center">Anonymous</h1>
+        <h1 class="center"><%= Faker::Twitter.screen_name  %></h1>
       <% end %>
       <div class="center">
         <% if @creator.website.present? %>

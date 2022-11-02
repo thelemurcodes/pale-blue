@@ -1,20 +1,20 @@
-<% @creators.each do |creator| %>
-    <%= link_to creator_path(creator) do %>
-      <div class="card" id="creator_card">
+<div class="card" id="creator_card">
+  <%= link_to creator_path(creator) do %>
+    <div class="frame">
+      <% if creator.photo.key.present?  %>
+        <img src= <%= cl_image_path creator.photo.key %>>
+      <% else %>
+        <%= image_tag "banner" %>
+      <% end  %>
+    </div>
+  <% end %>
 
-        <div class="frame">
-          <% if creator.photo.key  %>
-            <img src= <%= cl_image_path creator.photo.key %>>
-          <% else %>
-            <%= image_tag "banner" %>
-          <% end  %>
-        </div>
-
-        <% if creator.name.present? %>
-          <h5 class="center"><%= creator.name %></h5>
-        <% else  %>
-          <h5 class="center">Anonymous</h5>
-        <% end %>
-      </div>
-    <% end %>
-  <% end  %>
+  <% if creator.name.present? %>
+    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= creator.name %></h5>
+  <% else  %>
+    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= Faker::Twitter.screen_name %></h5>
+  <% end %>
+  <p style="margin:0">24hr Volume: $<%= rand(5000) %></p>
+  <p style="margin:0">Total Volume: $<%= rand(5000...25000) %></p>
+  <p style="margin:0;font-size:small;font-weight:bold">#<%= Faker::Science.science(:natural, :applied).gsub(/\s+/, "") %> #<%= Faker::Educator.subject.gsub(/\s+/, "") %></p>
+</div>

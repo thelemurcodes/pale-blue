@@ -1,5 +1,5 @@
 <%= turbo_frame_tag @raffle_item do %>
-  <div class="box" style="margin-block-start:1rem;border-radius:9px">
+  <div class="box center" style="margin-block-start:1rem;border-radius:9px">
     <%= simple_form_for [@raffle, @raffle_item] do |f| %>
       <%= f.error_notification %>
       <%= f.input :photo, as: :file, label: 'Item Photo:', required: false %>

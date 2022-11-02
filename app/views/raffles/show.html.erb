@@ -7,12 +7,12 @@
 <% end  %>
     <div class="with-sidebar" style="align-items:flex-start">
       <div class="box" id="left-side" style="border-radius:9px">
-        <h1 class="center" style="margin-block-end:0">Raffle: <%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+        <h1 class="center" style="margin-block-end:0"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
         <div class="stack"style="display:flex;align-items:center">
-          <p>Time Remaining: 10:05.73</p>
+          <p>Ending: <%= Faker::Time.forward(days: 3, format: :short) %></p>
           <p style="margin-block-start:0">Created by:
             <%= link_to creator_path(@raffle.creator) do %>
-              <%= @raffle.creator.name.present? ? @raffle.creator.name : "Anonymous" %>
+              <%= @raffle.creator.name.present? ? @raffle.creator.name : Faker::Twitter.screen_name %>
             <% end  %>
           </p>
           <div class="center" id="donation-btn" data-controller="donation">
@@ -24,9 +24,11 @@
         <p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>
       </div>
       <div id="right-side">
-      <h2 class="center">Raffle Items</h2>
+      <h2 class="center box" style="border-radius:9px;margin-block-start:0">Raffle Items</h2>
         <div class="grid">
-          <%= render "shared/raffle_item_card" %>
+          <% @raffle_items.each do |raffle_item| %>
+            <%= render "shared/raffle_item_card", raffle_item: raffle_item %>
+          <% end %>
         </div>
       </div>
     </div>
