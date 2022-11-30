@@ -88,7 +88,7 @@
         <h2>Transactions</h2>
     </div>
       <% if @creator.about.present? %>
-        <p class="center"><%= @creator.about %></p>
+        <p><%= @creator.about %></p>
       <% end %>
       <% raffles = Raffle.where('creator_id = ?', @creator) %>
       <% if raffles.count > 0 %>
@@ -113,10 +113,10 @@
       <% end %>
     <% if @creator.id == 1 %>
     <div>
-      <h2 class="center">Sign up form:</h2>
-      <h3 class="center">What problem faces my community that I want to solve?</h3>
+      <h2>Sign up form:</h2>
+      <h3>What problem faces my community that I want to solve?</h3>
       <% if @creator.answer_one %>
-        <p class="center">#1. <%= @creator.answer_one %></p>
+        <p>#1. <%= @creator.answer_one %></p>
       <% end %>
       <% if @creator.answer_two.present? %>
         <p class="center">#2. <%= @creator.answer_two %></p>
