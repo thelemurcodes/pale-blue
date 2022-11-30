@@ -72,11 +72,16 @@
     </div>
     <div id="right-side">
     <div class="reel">
-        <h2>About</h2>
-        <% if @creator.id == 2 %>
+        <% if @creator.id == 1 %>
+          <h2 class="active">About</h2>
+          <h2>Files</h2>
+          <h2>Raffles</h2>
+        <% if else @creator.id == 2  %>
+          <h2>About</h2>
           <h2 class="active">Files</h2>
           <h2>Raffles</h2>
-        <% else  %>
+        <% else %>
+          <h2>About</h2>
           <h2>Files</h2>
           <h2 class="active">Raffles</h2>
         <% end %>
@@ -106,8 +111,8 @@
           </div>
         </div>
       <% end %>
-
-    <!--<div>
+    <% if @creator.id == 1 %>
+    <div>
       <h2 class="center">Sign up form:</h2>
       <h3 class="center">What problem faces my community that I want to solve?</h3>
       <% if @creator.answer_one %>
@@ -119,7 +124,8 @@
       <% if @creator.answer_three.present? %>
         <p class="center">#3. <%= @creator.answer_three %></p>
       <% end %>
-    </div>-->
+    </div>
+    <% end %>
     </div>
 
   </div>
