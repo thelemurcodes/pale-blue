@@ -4,7 +4,7 @@
       <% if raffle.photo.key  %>
         <img src= <%= cl_image_path raffle.photo.key %>>
       <% else %>
-        <%= image_tag "banner" %>
+        <%= cl_image_tag "https://res.cloudinary.com/di5kw3ofb/image/upload/v1660903926/cld-sample-3.jpg" %>
       <% end  %>
     </div>
   <% end %>

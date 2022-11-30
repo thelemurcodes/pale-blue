@@ -4,7 +4,7 @@
     <% if raffle_item.photo.key  %>
       <img class="frame"style="border-end-start-radius:0;border-end-end-radius:0;" src= <%= cl_image_path raffle_item.photo.key %>>
     <% else %>
-      <%= image_tag "banner" , style: "border-end-start-radius:0;border-end-end-radius:0;"%>
+      <%= cl_image_tag "https://res.cloudinary.com/di5kw3ofb/image/upload/v1660903927/cld-sample-5.jpg" , style: "border-end-start-radius:0;border-end-end-radius:0;"%>
     <% end  %>
   </div>
   <% end %>
