@@ -1,8 +1,5 @@
 .card {
-
   .box.frame img {
-    width: $s5;
-    height: $s5;
     border-radius: $s-2;
   }
 
@@ -26,4 +23,8 @@
     margin-block-start: $s-3;
     margin-block-end: $s-3;
   }
+}
+
+.card#home {
+  max-width:15rem;
 }

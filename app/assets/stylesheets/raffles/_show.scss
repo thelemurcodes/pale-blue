@@ -1,15 +1,40 @@
 div#raffle-show {
-    min-height: 90vh;
+
+    .box.banner {
+      min-height: 90vh;
+    }
+    #raffle-photo {
+      img {
+        -webkit-filter: grayscale(0);
+        filter: none;
+      }
+    }
+
+    .with-sidebar > :first-child {
+      flex-basis: 30rem;
+    }
+
+
+    .with-sidebar > :last-child {
+      flex-basis: 0;
+      flex-grow: 999;
+      min-inline-size: 40%;
+    }
+
+    a {
+      font-size: small;
+    }
 
     #left-side{
       flex-basis: 25rem;
 
-      a {
-        font-size: large;
-      }
-
       h2.center {
         margin-block-start: 2rem;
+      }
+    }
+    @supports (width: Min(268px, 100%)) {
+      .grid#raffle-items-grid {
+        grid-template-columns: repeat(auto-fit, m#{i}nm#{a}x(Min(268px, 100%), 1fr));
       }
     }
 }

@@ -10,6 +10,9 @@ application.register("apply", ApplyController)
 import ConnectWalletController from "./connect_wallet_controller"
 application.register("connect-wallet", ConnectWalletController)
 
+import CountdownController from "./countdown_controller"
+application.register("countdown", CountdownController)
+
 import CreatorCheckController from "./creator_check_controller"
 application.register("creator-check", CreatorCheckController)
 
@@ -18,6 +21,9 @@ application.register("creator", CreatorController)
 
 import DonationController from "./donation_controller"
 application.register("donation", DonationController)
+
+import GetCreatorForFilController from "./get_creator_for_fil_controller"
+application.register("get-creator-for-fil", GetCreatorForFilController)
 
 import GetCreatorForRaffleController from "./get_creator_for_raffle_controller"
 application.register("get-creator-for-raffle", GetCreatorForRaffleController)

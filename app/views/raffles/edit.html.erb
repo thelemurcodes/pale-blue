@@ -1,39 +1,44 @@
-<% if @raffle.photo.key.present?  %>
-  <div class="box banner bg-img" id="raffle-edit" style="background-image:
-  linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.2)),
-  url('<%= cl_image_path @raffle.photo.key %>');">
-<% else %>
-  <div class="box banner bg-img" id="raffle-edit">
-<% end  %>
+  <div class="box banner" id="raffle-edit">
+    <h1 class="center" style="margin-block-end:0;font-size:1.5rem;"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+    <p class="center" style="margin-block-start:0;font-size:small">Created by:
+      <%= link_to creator_path(@raffle.creator) do %>
+        <%= @raffle.creator.name.present? ? @raffle.creator.name : "Anonymous" %>
+      <% end  %>
+    </p>
     <div class="with-sidebar" style="align-items:flex-start">
-      <div class="box" id="left-side" style="border-radius:9px">
-        <h1 class="center" style="margin-block-end:0"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+      <div id="left-side" style="border-radius:9px">
         <div class="stack"style="display:flex;align-items:center">
-          <p>Time Remaining: 10:05.73</p>
-          <p style="margin-block-start:0">Created by:
-            <%= link_to creator_path(@raffle.creator) do %>
-              <%= @raffle.creator.name.present? ? @raffle.creator.name : "Anonymous" %>
+          <div class="frame center" style="max-height:40vh;border-radius:9px;padding:0;margin-block-start:1.5rem;" id="raffle-photo">
+            <% if @raffle.photo.key  %>
+              <img style="border-radius:9px;border:1px solid white"src= <%= cl_image_path @raffle.photo.key %>>
+            <% else %>
+              <%= image_tag "banner", style: 'border:1px solid white' %>
             <% end  %>
-          </p>
+          </div>
+          <div>
+            <%= simple_form_for @raffle, url: raffle_path(@raffle),  method: :patch do |f| %>
+              <%= f.error_notification %>
+              <%= f.input :end_date, as: :date, html5: true %>
+              <%= f.input :end_time, as: :time, html5: true %>
+              <%= f.hidden_field :running, as: :hidden, value: true %>
+              <%= f.button :submit, 'Create' %>
+            <% end %>
+          </div>
           <button class="box">Publish</button>
         </div>
-
-        <h2 class="center">About </h2>
-        <p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>
       </div>
       <div id="right-side">
-        <div class="box" style="border-radius:9px">
-          <h2 class="center">Raffle Items</h2>
-          <div class ="center">
-            <%= button_to 'Add One', new_raffle_raffle_item_path(@raffle),
-            data: { turbo_frame: dom_id(RaffleItem.new)}, method: :get, class: 'box' %>
+        <div style="border-radius:9px">
+          <div class="reel" style="margin-block-end:1.6rem">
+            <h2 style="margin-block-end:0">About</h2>
+            <h2 style="color:rgb(86, 143, 179);margin-block-end:0">Physical Items</h2>
+            <h2 style="margin-block-end:0">Digital Items</h2>
           </div>
-        </div>
+          <%= button_to 'Add Item', new_raffle_raffle_item_path(@raffle),
+          data: { turbo_frame: dom_id(RaffleItem.new)}, method: :get, class: 'box' %>
         <%= turbo_frame_tag RaffleItem.new %>
-        <%= turbo_frame_tag "raffle_items" do %>
-          <div class="grid" style="margin-block-start:2rem">
+        <%= turbo_frame_tag "raffle_items", class: 'grid', style: 'margin-block-start:1rem' do %>
             <%= render @raffle_items %>
-          </div>
         <% end %>
       </div>
     </div>

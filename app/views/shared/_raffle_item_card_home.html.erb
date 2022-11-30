@@ -1,17 +1,19 @@
-<div class="card">
+<div class="card" id="home">
   <%= link_to raffle_raffle_item_path(raffle_item.raffle, raffle_item) do %>
-  <div class="box frame">
+  <div class="frame">
     <% if raffle_item.photo.key.present?  %>
-      <img src= <%= cl_image_path raffle_item.photo.key %>>
+      <img style="border: 1px white solid" src= <%= cl_image_path raffle_item.photo.key %>>
     <% else %>
-      <%= image_tag "banner" %>
+      <%= image_tag "banner", style: "border: 1px white solid" %>
     <% end %>
   </div>
   <% end %>
   <% if raffle_item.name.present? %>
-    <h4><%= raffle_item.name %></h4>
+    <h4><%= Faker::Tea.variety %></h4>
   <% else  %>
-    <h4>Non-Descript</h4>
+    <h4><%= Faker::Tea.variety %></h4>
   <% end %>
-  <p>Tickets Redeemed: <%= rand(500) %></p>
+  <% num = rand(0..1) %>
+  <p style="margin-block:0"><%= num == 0 ? 'Physical Item' : 'Digital Item' %></p>
+  <p style="margin-block:0">Tickets Redeemed: <%= rand(500) %></p>
 </div>

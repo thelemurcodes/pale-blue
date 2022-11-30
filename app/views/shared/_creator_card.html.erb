@@ -2,17 +2,17 @@
   <%= link_to creator_path(creator) do %>
     <div class="frame">
       <% if creator.photo.key.present?  %>
-        <img src= <%= cl_image_path creator.photo.key %>>
+        <img style="border: 1px white solid" src= <%= cl_image_path creator.photo.key %>>
       <% else %>
-        <%= image_tag "banner" %>
+        <%= image_tag "banner", style: "border: 1px white solid" %>
       <% end  %>
     </div>
   <% end %>
 
   <% if creator.name.present? %>
-    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= creator.name %></h5>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= creator.name %></h5>
   <% else  %>
-    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= Faker::Twitter.screen_name %></h5>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= Faker::Twitter.screen_name %></h5>
   <% end %>
   <p style="margin:0">24hr Volume: $<%= rand(5000) %></p>
   <p style="margin:0">Total Volume: $<%= rand(5000...25000) %></p>

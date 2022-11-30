@@ -5,6 +5,7 @@
   outline-offset: calc(#{$border-thin} * -1);
   color: $color-light;
   background-color: $color-dark;
+  border-radius: $s-2;
 
   * {
     color: inherit;

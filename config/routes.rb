@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :creators, only: ['new', 'create', 'show', 'edit', 'index', 'update'] do
     resources :donations, only: ['new', 'create']
-    # resources :fils, only: ['new', 'create']
   end
+  resources :fils, only: ['new', 'create', 'edit', 'destroy', 'index']
   resources :raffles, only: ['index', 'new', 'create', 'show', 'edit', 'update'] do
     resources :raffle_items, only: ['new', 'create', 'destroy', 'edit', 'show', 'index']
   end

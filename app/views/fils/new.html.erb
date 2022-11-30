@@ -1,0 +1,16 @@
+<div class="box banner bg-img cover" id="new-file">
+  <div></div>
+  <section class="box center">
+    <h2>Upload Files</h2>
+    <%= simple_form_for [@fil] do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :photo, as: :file, label: 'File:' %>
+      <%= f.input :name, as: :string, label: 'Name:' %>
+      <%= f.hidden_field :creator_id, as: :text, required: true %>
+    <% end %>
+    <button style="margin-block-start:1rem;" class="box"
+    id="disabled" data-controller="get-creator-for-fil"
+    data-action="click->get-creator-for-fil#getCreator">Upload</button>
+  </section>
+  <div></div>
+</div>

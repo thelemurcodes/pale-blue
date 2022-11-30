@@ -1,12 +1,14 @@
 div#raffle-edit {
   min-height: 90vh;
 
-  #left-side{
-    flex-basis: 25rem;
+  a {
+    font-size: small;
+  }
 
-    a {
-      font-size: large;
-    }
+  #left-side{
+    flex-basis: 10rem;
+
+
   }
 
   input.form-control.file {

@@ -1,18 +1,20 @@
-<div class="card">
- <%= link_to raffle_path(raffle) do %>
-  <div class="box frame">
-    <% if raffle.photo.key.present?  %>
-      <img src= <%= cl_image_path raffle.photo.key %>>
-    <% else %>
-      <%= image_tag "banner" %>
-    <% end %>
-  </div>
-  <% end  %>
-  <% if raffle.title.present? %>
-    <h4><%= raffle.title %></h4>
-  <% else  %>
-    <h4><%=Faker::Hipster.sentence(word_count: 3) %></h4>
+<div class="card" id="raffle_card">
+  <%= link_to raffle_path(raffle) do %>
+    <div class="frame">
+      <% if raffle.photo.key  %>
+        <img src= <%= cl_image_path raffle.photo.key %>>
+      <% else %>
+        <%= image_tag "banner" %>
+      <% end  %>
+    </div>
   <% end %>
-  <p>Raffle Items: <%= rand(50) %></p>
-  <p>Tickets Redeemed: <%= rand(4000) %></p>
+  <% if raffle.title.present? %>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= raffle.title %></h5>
+  <% else  %>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem">Unknown</h5>
+  <% end %>
+  <p style="margin:0">Ending: <%= Faker::Time.forward(days: 3, format: :short) %></p>
+  <p style="margin:0">Raffle Items: <% count =  RaffleItem.where('raffle_id = ?', raffle).count %><%= count %></p>
+  <p style="margin:0">Tickets Redeemed: <%= rand(4000) %></p>
+  <p style="margin:0;font-size:small;font-weight:bold">#<%= Faker::Science.science(:natural, :applied).gsub(/\s+/, "") %> #<%= Faker::Educator.subject.gsub(/\s+/, "") %></p>
 </div>

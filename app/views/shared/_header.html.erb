@@ -1,14 +1,19 @@
 <header class="box cluster sticky">
   <%= link_to 'pb', root_path, {class: "box", id: "logo"} %>
+  <div class="cluster" id="ticket">
+    <p style="font-size:medium">Raffle Tickets: <%= rand(0..200) %></p>
+  </div>
   <div class="cluster" id="nav-items">
     <!--<%= link_to 'About', '#', {class: "hidden-mobile"} %>-->
     <%= link_to 'Sign Up', new_creator_path, {class: "hidden-mobile"} %>
     <%= link_to 'Creators', creators_path, {class: "hidden-mobile"} %>
     <%= link_to 'Raffles', raffles_path, {class: "hidden-mobile"} %>
-    <%= link_to 'New Raffle', new_raffle_path, {class: "hidden-mobile"} %>
+    <%= link_to 'New Raffle', new_raffle_path, {class: "hidden-mobile", id: "raffle"} %>
+    <%= link_to 'New Upload', new_fil_path, {class: "hidden-mobile", id: "file"} %>
     <button class="box hidden-mobile" id="wallet"
     data-action="click->connect-wallet#connect_wallet"
-    data-connect-wallet-target="wallet">Connect Wallet</button>
+    data-connect-wallet-target="wallet"
+    data-connected-value="<%=@connected%>">Connect Wallet</button>
     <div class="hidden-large"><%= render "shared/hamburger_menu" %></div>
   </div>
 </header>

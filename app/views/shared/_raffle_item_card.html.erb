@@ -1,17 +1,28 @@
-<div class="card box" id="raffle_item" style="padding:0;border-radius:9px;">
-  <%= link_to raffle_raffle_item_path(@raffle,raffle_item) do %>
+<div class="card box" id="raffle-item" style="padding:0">
+  <%= link_to raffle_raffle_item_path(raffle_item.raffle,raffle_item) do %>
   <div class="frame">
     <% if raffle_item.photo.key  %>
-      <img src= <%= cl_image_path raffle_item.photo.key %>>
+      <img class="frame"style="border-end-start-radius:0;border-end-end-radius:0;" src= <%= cl_image_path raffle_item.photo.key %>>
     <% else %>
-      <%= image_tag "banner" %>
+      <%= image_tag "banner" , style: "border-end-start-radius:0;border-end-end-radius:0;"%>
     <% end  %>
   </div>
   <% end %>
 
   <% if raffle_item.name.present? %>
-    <h5 class="center"><%= raffle_item.name %></h5>
+    <h4 style="margin-block-start:.5rem;margin-inline-start:.5rem"><%= Faker::Tea.variety %></h4>
   <% else  %>
-    <h5 class="center">Unknown</h5>
+    <h4 style="margin-block-start:.5rem;margin-inline-start:.5rem"><%= Faker::Tea.variety %></h4>
   <% end %>
+  <% num = rand(0..1) %>
+  <p style="margin-inline-start:.5rem;margin-block:0"><%= num == 0 ? 'Physical Item' : 'Digital Item' %></p>
+  <p style="margin-inline-start:.5rem;margin-block:0">Tickets Redeemed: <%= rand(500) %></p>
+  <div style="display:flex;justify-content:center;margin-block:1rem;margin-inline:.5rem; gap: .5rem;">
+    <div>
+      <i class="fa-solid fa-plus"></i>
+      <input style="width:6rem;margin-inline:.15rem;text-align: center;" type="number" value="1">
+      <i class="fa-solid fa-minus"></i>
+    </div>
+    <button class="box" style="min-width:auto">Redeem</button>
+  </div>
 </div>

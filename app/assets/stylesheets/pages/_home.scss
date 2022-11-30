@@ -30,7 +30,6 @@
 .box.banner#first {
   min-height: 80vh;
   overflow-wrap: break-word;
-  direction:ltr;
 }
 
 div#first {
@@ -82,10 +81,6 @@ h1 {
 }
 
 // third and fourth banner
-.banner-cards {
-  margin-inline-start: $s2;
-  margin-inline-end: $s2;
-}
 
 .browse {
   display: flex;

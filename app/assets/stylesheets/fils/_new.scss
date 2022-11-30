@@ -1,4 +1,6 @@
-div#update {
+div#new-file {
+  min-height: 90vh;
+
   textarea, input {
     background-color: transparent;
     color: $color-light;
@@ -12,14 +14,20 @@ div#update {
     box-sizing: border-box;
   }
 
+  label {
+    display:block;
+    font-size: medium;
+    text-align: left;
+  }
+
   input.btn {
-      box-shadow: $s-2 $s-2 $color-primary-a;
-      font-weight: bold;
-      font-size: medium;
-      min-width: 10rem;
-      border-radius: $s-2;
-      padding: $s-1;
-      margin-block-start: $s-1;
+    box-shadow: $s-2 $s-2 $color-primary-a;
+    font-weight: bold;
+    font-size: medium;
+    min-width: 10rem;
+    border-radius: $s-2;
+    padding: $s-1;
+    margin-block-start: $s-1;
   }
 
   input.btn:active:focus {
@@ -31,17 +39,7 @@ div#update {
     box-shadow: $s-2 $s-2 $color-primary;
   }
 
-  label {
-    display:block;
-    font-size: medium;
-    text-align: left;
-  }
-
-  .box.center{
-    border-radius: $s-2
-  }
-
-  #creator_photo {
+  input#fil_photo {
     max-width:10rem;
     border: none;
     padding-inline-start: 0;
@@ -55,30 +53,5 @@ div#update {
     color: $color-light;
     background-color: $color-dark;
     border-radius: $s-2;
-  }
-
-  p.center {
-    font-weight:bold;
-  }
-
-  div.stack {
-    padding:1rem;
-  }
-
-  #left-side {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    .stack {
-      flex-grow:1;
-      flex-basis: 50%;
-    }
-  }
-
-  #right-side {
-    flex-basis: 0;
-    flex-grow: 999;
-    min-inline-size: 50%;
   }
 }

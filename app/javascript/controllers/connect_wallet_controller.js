@@ -10,9 +10,16 @@ export default class extends Controller {
   static targets = ['wallet']
 
   initialize() {
+    document.getElementById("ticket").style.display = 'none'
+    document.getElementById("raffle").style.display = 'none'
+    document.getElementById("file").style.display = 'none'
+
     const provider = this.get_provider()
     provider.connect({ onlyIfTrusted: true })
     .then(() => {
+      document.getElementById("ticket").style.display = 'initial'
+      document.getElementById("raffle").style.display = 'initial'
+      document.getElementById("file").style.display = 'initial'
       this.display_wallet(provider.publicKey.toString())
     })
     .catch((error) => {
@@ -31,6 +38,9 @@ export default class extends Controller {
         await provider.connect()
     }
     main().then(() => {
+      document.getElementById("ticket").style.display = 'initial'
+      document.getElementById("raffle").style.display = 'initial'
+      document.getElementById("file").style.display = 'initial'
       this.display_wallet(provider.publicKey.toString())
     }).catch((error) => {
       console.error(error)

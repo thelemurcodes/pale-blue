@@ -1,50 +1,65 @@
-<div class="box banner" id="creator-show" style="min-height:90vh">
+<div class="box banner" id="creator-show">
   <div class="with-sidebar">
     <div id="left-side">
-      <% if @creator.name.present? %>
-        <h1 class="center"><%= @creator.name %></h1>
-        <% else  %>
-        <h1 class="center"><%= Faker::Twitter.screen_name  %></h1>
-      <% end %>
+    <% if @creator.name.present? %>
+    <h1 class="center"><%= @creator.name %></h1>
+    <% else  %>
+    <h1 class="center"><%= Faker::Twitter.screen_name  %></h1>
+  <% end %>
+  <div style="display:flex;justify-content:center;">
+  <p id="pass">Pale Blue Pass:
+    <a
+      href="https://solscan.io/token/<%=@creator.pale_blue_tkn%>?cluster=devnet"
+      target="_blank" rel="noopener">
+      <%= @creator.pale_blue_tkn[0,4] %>...<%=@creator.pale_blue_tkn[@creator.pale_blue_tkn.length - 4,4] %>
+    </a></p></div>
+  <div id="liking">
+    <i class="fa-solid fa-thumbs-up fa-flip-horizontal"></i>
+    <p><%= rand(60..100) %>%</p>
+    <i class="fa-solid fa-thumbs-down"></i>
+  </div>
+      <div class="center" id="creator-photo">
+        <% if @creator.photo.key.present?  %>
+          <img class="box" id='creator-photo' src= <%= cl_image_path @creator.photo.key %>>
+        <% else %>
+          <%= image_tag "banner", class:'box', id:'creator-photo' %>
+        <% end %>
+      </div>
       <div class="center">
-        <% if @creator.website.present? %>
-          <a href=<%= @creator.website %> target="_blank" rel="noopener">
-          <i class="fa-solid fa-globe"></i></a>
-        <% end %>
-        <% if @creator.linkedin.present? %>
-          <a href=<%= @creator.linkedin %> target="_blank" rel="noopener">
-          <i class="fa-brands fa-linkedin"></i></a>
-        <% end %>
-        <% if @creator.facebook.present? %>
-          <a href=<%= @creator.facebook %> target="_blank" rel="noopener">
-          <i class="fa-brands fa-square-facebook"></i></a>
-        <% end %>
-        <% if @creator.twitter.present? %>
-          <a href=<%= @creator.twitter %> target="_blank" rel="noopener">
-          <i class="fa-brands fa-square-twitter"></i></a>
-        <% end %>
-        <% if @creator.instagram.present? %>
-          <a href=<%= @creator.instagram %> target="_blank" rel="noopener">
-          <i class="fa-brands fa-instagram"></i></a>
-        <% end %>
-        <% if @creator.discord.present? %>
-          <a href=<%= @creator.discord %> target="_blank" rel="noopener">
-          <i class="fa-brands fa-discord"></i></a>
-        <% end %>
+        <div id="links">
+          <% if @creator.website.present? %>
+            <a href=<%= @creator.website %> target="_blank" rel="noopener">
+            <i class="fa-solid fa-globe"></i></a>
+          <% end %>
+          <% if @creator.linkedin.present? %>
+            <a href=<%= @creator.linkedin %> target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin"></i></a>
+          <% end %>
+          <% if @creator.facebook.present? %>
+            <a href=<%= @creator.facebook %> target="_blank" rel="noopener">
+            <i class="fa-brands fa-square-facebook"></i></a>
+          <% end %>
+          <% if @creator.twitter.present? %>
+            <a href=<%= @creator.twitter %> target="_blank" rel="noopener">
+            <i class="fa-brands fa-square-twitter"></i></a>
+          <% end %>
+          <% if @creator.instagram.present? %>
+            <a href=<%= @creator.instagram %> target="_blank" rel="noopener">
+            <i class="fa-brands fa-instagram"></i></a>
+          <% end %>
+          <% if @creator.discord.present? %>
+            <a href=<%= @creator.discord %> target="_blank" rel="noopener">
+            <i class="fa-brands fa-discord"></i></a>
+          <% end %>
+        </div>
         <p class="center">Creator Since: <%= @creator.created_at.to_date %>
         <p class="center">Blockchain: <%= @creator.blockchain.name %></p>
-        <p class="center">Pale Blue ID:
-          <a class="center"
-            href="https://solscan.io/token/<%=@creator.pale_blue_tkn%>?cluster=devnet"
-            target="_blank" rel="noopener">
-            <%= @creator.pale_blue_tkn[0,4] %>...
-            <%=@creator.pale_blue_tkn[@creator.pale_blue_tkn.length - 4,4] %>
-          </a>
-        </p>
+
       </div>
       <div class="stack">
         <div class="center" id="donation-btn" data-controller="donation">
-          <%= button_to 'Make Donation', new_creator_donation_path(@creator),
+          <% wording = @creator.non_profit ? 'Make Donation' : 'Make Contribution'%>
+          <%= button_to wording, new_creator_donation_path(@creator),
           data: { turbo_frame: 'modal' }, method: :get, class: 'box' %>
         </div>
         <div class="center"
@@ -56,18 +71,18 @@
       </div>
     </div>
     <div id="right-side">
-      <% if @creator.photo.key.present?  %>
-        <img class="box" id='creator-photo' src= <%= cl_image_path @creator.photo.key %>>
-      <% end %>
+    <div class="reel">
+        <h2>About</h2>
+        <h2>Files</h2>
+        <h2 class="active">Raffles</h2>
+        <h2>Transactions</h2>
+    </div>
       <% if @creator.about.present? %>
-        <h2 class="center">Introduction:</h2>
         <p class="center"><%= @creator.about %></p>
-        <br><hr><br>
       <% end %>
       <% raffles = Raffle.where('creator_id = ?', @creator) %>
       <% if raffles.count > 0 %>
       <div class="banner-cards">
-        <h3 class="center">Raffles</h3>
         <div class="reel">
           <% raffles.each do |raffle|  %>
             <%= render 'shared/raffle_card_home', raffle: raffle%>
@@ -75,20 +90,19 @@
         </div>
       </div>
       <% end  %>
+
       <% files = Fil.where('creator_id = ?', @creator) %>
       <% if files.count > 0 %>
         <div class="banner-cards">
-          <h3 class="center">Files</h3>
           <div class="reel">
-            <% 10.times do %>
-              <%= render 'shared/fil_card'%>
-            <% end %>
+            <% files.each do |file|  %>
+            <%= render 'shared/fil_card', fil: file %>
+          <% end %>
           </div>
         </div>
-      <br><hr><br>
       <% end %>
 
-    <div>
+    <!--<div>
       <h2 class="center">Sign up form:</h2>
       <h3 class="center">What problem faces my community that I want to solve?</h3>
       <% if @creator.answer_one %>
@@ -100,7 +114,7 @@
       <% if @creator.answer_three.present? %>
         <p class="center">#3. <%= @creator.answer_three %></p>
       <% end %>
-    </div>
+    </div>-->
     </div>
 
   </div>

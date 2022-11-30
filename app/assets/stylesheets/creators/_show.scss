@@ -1,19 +1,55 @@
 #creator-show {
-  #left-side {
-    flex-basis: 25rem;
+  min-height: 90vh;
 
-    p, p a {
+  h1 {
+    margin-block-end:0;
+    font-size:1.5rem;
+  }
+
+  p#pass {
+    margin-block:0;
+    font-size:small;
+    a {
       font-size:small;
+    }
+
+  }
+
+  #liking {
+    display:flex;
+    align-content:center;
+    justify-content:center;
+    padding:.25rem;
+    gap:.25rem;
+    margin-block-end: 1rem;
+
+    .fa-thumbs-up {
+      color:rgb(86, 143, 179);
+    }
+
+    p {
+      margin-block:0;
+      font-size:.9rem;
+      text-decoration:underline dotted;
+    }
+
+    .fa-thumbs-down {
+      align-self: flex-end;
+      color:grey;
     }
   }
 
-  h1 {
-    margin-block-end:1rem;
+  #left-side {
+    flex-basis: 20rem;
+
+    p, p a {
+      font-size:small;
+      margin-block:0;
+    }
   }
 
   a {
     text-decoration:none;
-    margin-inline-end:1rem;
   }
 
 
@@ -25,13 +61,41 @@
   #right-side {
     min-inline-size: 50%;
 
+    .reel {
+      margin-block-end:1.6rem;
+    }
+
+    h2 {
+      margin-block:0;
+    }
+
     p{
       text-align: left;
+    }
+
+    .active {
+      color:rgb(86, 143, 179);
     }
   }
 
   #creator-photo {
-    padding:0;
-    border-radius:9px;
+    padding: 0;
+    img {
+      -webkit-filter: grayscale(0);
+      filter: none;
+      max-height:40vh;
+    }
+  }
+
+  #links {
+    margin-block:.5rem;
+  }
+
+  #creator-photo.frame > img {
+    block-size: 100%;
+  }
+
+  .card#raffle_card {
+    width:15rem;
   }
 }

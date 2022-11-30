@@ -9,11 +9,13 @@
     </div>
   <% end %>
   <% if raffle.title.present? %>
-    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= raffle.title %></h5>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem"><%= raffle.title %></h5>
   <% else  %>
-    <h5 class="center" style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem">Unknown</h5>
+    <h5 style="font-weight:bold;margin-block-end:.25rem;margin-block-start:.25rem">Unknown</h5>
   <% end %>
-  <p style="margin:0">Ending: <%= Faker::Time.forward(days: 3, format: :short) %></p>
+  <p data-controller="countdown"
+    data-countdown-date-value=<%=raffle.end_date%>
+    data-countdown-time-value=<%=raffle.end_time.strftime "%H:%M:%S"%>></p>
   <p style="margin:0">Raffle Items: <% count =  RaffleItem.where('raffle_id = ?', raffle).count %><%= count %></p>
   <p style="margin:0">Tickets Redeemed: <%= rand(4000) %></p>
   <p style="margin:0;font-size:small;font-weight:bold">#<%= Faker::Science.science(:natural, :applied).gsub(/\s+/, "") %> #<%= Faker::Educator.subject.gsub(/\s+/, "") %></p>

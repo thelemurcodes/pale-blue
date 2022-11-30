@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" id="home">
   <%= link_to creator_path(creator) do %>
     <div class="box frame">
       <% if creator.photo.key.present?  %>
-        <img src= <%= cl_image_path creator.photo.key %>>
+        <img style="border: 1px white solid" src= <%= cl_image_path creator.photo.key %>>
       <% else %>
-        <%= image_tag "banner" %>
+        <%= image_tag "banner", style: "border: 1px white solid" %>
       <% end %>
     </div>
   <% end %>

@@ -1,27 +1,25 @@
 <div class="box banner" id="update">
   <div class="box center">
     <h2>Update your Creator Profile</h2>
-    <p class="center" style="font-weight:bold">All fields are optional. Enter what you wish.</p>
+    <p class="center">All fields are optional. Enter what you wish.</p>
     <%= simple_form_for @creator do |f| %>
-          <div class="stack" style="padding:1rem;">
+          <div class="stack">
           <%= f.input :photo, as: :file, label: 'Profile Picture:' %>
           </div>
           <hr>
-          <div class=stack style="padding:1rem">
+          <div class=stack>
           <%= f.input :name, required: false, label: 'Name:' %>
           <%= f.input :about, required: false, as: :text, label: 'About Me:' %>
           </div>
           <hr>
-          <p class="center" style="font-weight:bold">Copy and paste links here:</p>
-          <div style="display:flex;flex-wrap: wrap;justify-content:space-between;">
-            <div class="stack" style="flex-grow:1;flex-basis: 50%;padding:1rem">
+          <p class="center">Copy and paste links here:</p>
+          <div id="left-side">
+            <div class="stack">
             <%= f.input :website, required: false, as: :string, label: 'Website:' %>
             <%= f.input :facebook, required: false, as: :string, label: 'Facebook:' %>
             <%= f.input :twitter, required: false, as: :string, label: 'Twitter:' %>
             </div>
-            <div class="stack" style="flex-basis: 0;
-  flex-grow: 999;
-  min-inline-size: 50%;padding:1rem">
+            <div id="right-side" class="stack">
             <%= f.input :instagram, required: false, as: :string, label: 'Instagram:' %>
             <%= f.input :linkedin, required: false, as: :string, label: 'Linkedin:' %>
             <%= f.input :discord, required: false, as: :string, label: 'Discord:' %>

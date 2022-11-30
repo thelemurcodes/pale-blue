@@ -1,31 +1,41 @@
-<% if @raffle.photo.key.present?  %>
-  <div class="box banner bg-img" id="raffle-show" style="background-image:
-  linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.2)),
-  url('<%= cl_image_path @raffle.photo.key %>');">
-<% else %>
-  <div class="box banner bg-img" id="raffle-show">
-<% end  %>
+<div id="raffle-show">
+  <div class="box banner">
+    <h1 class="center" style="margin-block-end:0;font-size:1.5rem;"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
+    <p class="center" style="margin-block-start:0;font-size:small">Created by:
+      <%= link_to creator_path(@raffle.creator) do %>
+        <%= @raffle.creator.name.present? ? @raffle.creator.name : Faker::Twitter.screen_name %>
+      <% end  %>
+    </p>
     <div class="with-sidebar" style="align-items:flex-start">
-      <div class="box" id="left-side" style="border-radius:9px">
-        <h1 class="center" style="margin-block-end:0"><%= @raffle.title.present? ? @raffle.title : 'Not Provided'%></h1>
-        <div class="stack"style="display:flex;align-items:center">
-          <p>Ending: <%= Faker::Time.forward(days: 3, format: :short) %></p>
-          <p style="margin-block-start:0">Created by:
-            <%= link_to creator_path(@raffle.creator) do %>
-              <%= @raffle.creator.name.present? ? @raffle.creator.name : Faker::Twitter.screen_name %>
+      <div class="box" id="left-side" style="border:none;padding:0">
+
+        <div class="stack"style="display:flex;align-items:center;">
+          <div class="frame center" style="max-height:40vh;border-radius:9px;padding:0;margin-block-start:1.5rem;" id="raffle-photo">
+            <% if @raffle.photo.key  %>
+              <img style="border-radius:9px;border:1px solid white"src= <%= cl_image_path @raffle.photo.key %>>
+            <% else %>
+              <%= image_tag "banner", style: 'border:1px solid white' %>
             <% end  %>
-          </p>
-          <div class="center" id="donation-btn" data-controller="donation">
-          <%= button_to 'Make Donation', new_creator_donation_path(@raffle.creator),
+          </div>
+          <p data-controller="countdown"
+          data-countdown-date-value=<%=@raffle.end_date%>
+          data-countdown-time-value=<%=@raffle.end_time.strftime "%H:%M:%S"%>></p>
+          <div class="center" id="donation-btn" data-controller="donation" style="margin-block-start:1rem;">
+          <% wording = @raffle.creator.non_profit ? 'Make Donation' : 'Make Contribution'%>
+
+          <%= button_to wording, new_creator_donation_path(@raffle.creator),
           data: { turbo_frame: 'modal' }, method: :get, class: 'box' %>
         </div>
         </div>
-        <h2 class="center">About </h2>
-        <p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>
       </div>
       <div id="right-side">
-      <h2 class="center box" style="border-radius:9px;margin-block-start:0">Raffle Items</h2>
-        <div class="grid">
+      <div class="reel" style="margin-block-end:1.6rem">
+        <h2 style="margin-block-end:0">About</h2>
+        <h2 style="color:rgb(86, 143, 179);margin-block-end:0">Raffle Items</h2>
+        <h2 style="margin-block-end:0">Transactions</h2>
+      </div>
+      <!--<p class="center"><%= @raffle.about.present? ? @raffle.about : "No info provided." %></p>-->
+        <div class="grid" id="raffle-items-grid">
           <% @raffle_items.each do |raffle_item| %>
             <%= render "shared/raffle_item_card", raffle_item: raffle_item %>
           <% end %>
@@ -33,3 +43,4 @@
       </div>
     </div>
   </div>
+</div>

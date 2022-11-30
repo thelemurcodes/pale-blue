@@ -1,0 +1,43 @@
+div#raffle-item {
+    input[type="number"] {
+    background-color: transparent;
+    color: $color-light;
+    border-radius: $s-2;
+    border: $s-5 solid;
+    outline: $border-thin transparent;
+    outline-offset: calc(#{$border-thin} * -1);
+    font-size:large;
+    padding: $s-2;
+    max-width: 30%;
+    box-sizing: border-box;
+  }
+
+  button {
+    box-shadow: $s-3 $s-3 $color-primary-a;
+  }
+
+  i {
+    border: $s-5 solid white;
+    padding:5px;
+    border-radius: 50%;
+    box-shadow: $s-4 $s-4 $color-primary-a;
+    font-size: $s-1;
+  }
+
+  i:active:focus {
+    transform: scale(0.95);
+    box-shadow: $s-4 $s-4 $color-primary;
+  }
+
+  i:hover {
+    box-shadow: $s-5 $s-5 $color-primary;
+  }
+
+  button:hover {
+    box-shadow: $s-3 $s-3 $color-primary;
+  }
+
+  img {
+    
+  }
+}
