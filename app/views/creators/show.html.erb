@@ -73,8 +73,13 @@
     <div id="right-side">
     <div class="reel">
         <h2>About</h2>
-        <h2>Files</h2>
-        <h2 class="active">Raffles</h2>
+        <% if @creator.id == 2 %>
+          <h2 class="active">Files</h2>
+          <h2>Raffles</h2>
+        <% else  %>
+          <h2>Files</h2>
+          <h2 class="active">Raffles</h2>
+        <% end %>
         <h2>Transactions</h2>
     </div>
       <% if @creator.about.present? %>
