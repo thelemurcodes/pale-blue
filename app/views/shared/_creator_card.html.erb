@@ -4,7 +4,7 @@
       <% if creator.photo.key.present?  %>
         <img style="border: 1px white solid" src= <%= cl_image_path creator.photo.key %>>
       <% else %>
-        <%= cl_image_tag "https://res.cloudinary.com/di5kw3ofb/image/upload/v1661528656/production/ydsky45v1bxte8hmsx53kyahwrwb.jpg", style: "border: 1px white solid" %>
+        <%= cl_image_tag "ydsky45v1bxte8hmsx53kyahwrwb.jpg", style: "border: 1px white solid" %>
       <% end  %>
     </div>
   <% end %>
